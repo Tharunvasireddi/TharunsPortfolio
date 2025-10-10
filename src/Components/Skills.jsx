@@ -1,91 +1,104 @@
 import React from "react";
+import { motion } from "framer-motion";
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
 
 function Skills() {
-  const skills = [
-    { name: "React", percentage: 75 },
-    { name: "JavaScript", percentage: 85 },
-    { name: "Tailwind CSS", percentage: 85 },
-    { name: "HTML", percentage: 80 },
+  const skillCategories = [
+    {
+      title: "Frontend & Backend",
+      skills: [
+        "React",
+        "JavaScript",
+        "TypeScript",
+        "HTML",
+        "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+      ],
+    },
+    {
+      title: "Databases & Tools",
+      skills: ["MongoDB", "Git", "GitHub", "VS Code"],
+    },
+    {
+      title: "Programming Languages",
+      skills: ["C", "Java", "Python"],
+    },
   ];
-
-  const Technologies = [
-    { name: "Git", percentage: 75 },
-    { name: "GitHub", percentage: 75 },
-    { name: "VS Code", percentage: 75 },
-  ];
-  const ProgrammingLan=[
-    {name:"C",percentage:85},
-    {name:"java",percentage:75},
-    {name:"python",percentage:70},
-  ]
 
   return (
-    <  div className="bg-gray-700 text-white p-6 flex flex-col items-center justify-center gap-6 min-h-screen" id="Skills">
-      <h1 className="text-4xl font-bold font-serif">Skills</h1>
-
-      <div className="flex flex-wrap items-start justify-center gap-6 w-full max-w-6xl">
-        <div className="flex flex-col border  p-4 rounded-md w-full md:w-1/2 lg:w-2/5">
-          <h2 className="text-2xl font-bold mb-4">Frontend Development</h2>
-          <div>
-            {skills.map((skill, index) => (
-              <div key={index} className="mb-4">
-                <div className="flex justify-between mb-1">
-                  <span className="text-lg">{skill.name}</span>
-                  <span className="text-lg">{skill.percentage}%</span>
-                </div>
-                <div className="w-full bg-gray-800  rounded-full h-2">
-                  <div
-                    className="bg-white h-2 rounded-full"
-                    style={{ width: `${skill.percentage}%` }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
+    <motion.div
+      className="min-h-screen bg-base-100 py-20"
+      id="Skills"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-5xl font-bold text-primary">
+            Technical Skills
+          </h2>
+          <p className="text-base-content/70 mt-4 text-lg">
+            A summary of my technical capabilities.
+          </p>
         </div>
-
-        <div className="flex flex-col border  p-4 rounded-md w-full md:w-1/2 lg:w-2/5">
-          <h2 className="text-2xl font-bold mb-4">Tools & Technology</h2>
-          <div>
-            {Technologies.map((tech, index) => (
-              <div key={index} className="mb-4">
-                <div className="flex justify-between mb-1">
-                  <span className="text-lg">{tech.name}</span>
-                  <span className="text-lg">{tech.percentage}%</span>
-                </div>
-                <div className="w-full bg-gray-800 rounded-full h-2">
-                  <div
-                    className="bg-white h-2 rounded-full"
-                    style={{ width: `${tech.percentage}%` }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
-          </div>
-          <div className="flex flex-col border  p-4 rounded-md w-full md:w-1/2 lg:w-2/5">
-          <h2 className="text-2xl font-bold mb-4">Languages</h2>
-          <div>
-            {ProgrammingLan.map((lang, index) => (
-              <div key={index} className="mb-4">
-                <div className="flex justify-between mb-1">
-                  <span className="text-lg">{lang.name}</span>
-                  <span className="text-lg">{lang.percentage}%</span>
-                </div>
-                <div className="w-full bg-gray-800 rounded-full h-2">
-                  <div
-                    className="bg-white h-2 rounded-full"
-                    style={{ width: `${lang.percentage}%` }}
-                  ></div>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={sectionVariants}
+        >
+          {skillCategories.map((category, index) => (
+            <motion.div
+              key={index}
+              className="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300"
+              variants={cardVariants}
+              whileHover={{ y: -10, transition: { duration: 0.3 } }}
+            >
+              <div className="card-body">
+                <h3 className="card-title text-2xl text-primary">
+                  {category.title}
+                </h3>
+                <div className="flex flex-wrap gap-3 mt-4">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div
+                      key={skillIndex}
+                      className="badge badge-lg badge-outline border-primary/50 text-primary/90"
+                    >
+                      {skill}
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
-
 
 export default Skills;

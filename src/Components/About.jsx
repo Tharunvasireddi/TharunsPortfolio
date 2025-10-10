@@ -1,30 +1,83 @@
 import React from "react";
+import { motion } from "framer-motion";
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 function About() {
   return (
-    <div className="bg-gray-800 min-h-screen flex flex-col items-center justify-center gap-10 p-4" id="About">
-      <div className="flex flex-col items-center justify-center gap-3 max-w-4xl text-center">
-        <h1 className="text-white text-4xl font-bold font-serif">About</h1>
-        <p className="text-white font-serif text-lg leading-relaxed">
-          I’m a passionate web developer, currently learning React and building dynamic, responsive web applications. 
-          I love creating user-friendly interfaces and continuously improving my skills through hands-on projects. 
-          Always eager to solve problems and stay updated with modern web technologies. 
-          Actively seeking internship opportunities to gain real-world experience and grow as a developer.
-        </p>
-      </div>
-      
-      <div className="w-full px-4">
-        <h1 className="text-2xl text-white font-serif font-semibold text-center mb-4">Education</h1>
-        <div className="flex flex-wrap items-center justify-center gap-6 ">
-          <div className="flex flex-col items-center justify-center text-white gap-2 border border-gray-500 p-5 rounded-lg   bg-gray-900">
-            <h2 className="text-xl font-serif">Bachelor in Technology</h2>
-            <p className="text-lg">GMR Institute of Technology</p>
-            <p className="text-lg">2023-2027</p>
-            <p className="text-lg text-center text-wrap sm:text-nowrap">Specialized in Electronics and Communication Engineering</p>
+    <motion.div
+      className="min-h-screen bg-base-200 py-20"
+      id="About"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-5xl font-bold text-primary">
+            About Me
+          </h2>
+          <p className="text-base-content/70 mt-4 text-lg">
+            A little bit about my journey and education.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
+          <div className="md:col-span-3">
+            <div className="prose prose-lg text-base-content/90 max-w-none">
+              <p>
+                I'm a passionate web developer, currently learning React and
+                building dynamic, responsive web applications. I love creating
+                user-friendly interfaces and continuously improving my skills
+                through hands-on projects.
+              </p>
+              <p>
+                Always eager to solve problems and stay updated with modern web
+                technologies. I am actively seeking internship opportunities to
+                gain real-world experience and grow as a developer.
+              </p>
+            </div>
+          </div>
+          <div className="md:col-span-2">
+            <motion.div
+              className="card bg-base-100 shadow-2xl"
+              whileHover={{ y: -10, transition: { duration: 0.3 } }}
+            >
+              <div className="card-body">
+                <h3 className="card-title text-2xl text-primary">Education</h3>
+                <div className="mt-4 space-y-4">
+                  <div>
+                    <p className="font-semibold text-lg">
+                      Bachelor in Technology
+                    </p>
+                    <p className="text-base-content/80">
+                      GMR Institute of Technology
+                    </p>
+                    <p className="text-sm text-base-content/60">2023 - 2027</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-lg">Specialization</p>
+                    <p className="text-base-content/80">
+                      Electronics and Communication Engineering
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 export default About;

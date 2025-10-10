@@ -1,15 +1,44 @@
 import React, { useState } from "react";
-import { Github, Linkedin } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Send,
+  User,
+  Mail,
+  MessageSquare,
+} from "lucide-react";
 import emailjs from "@emailjs/browser";
-import { Send } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const alertVariants = {
+  initial: { opacity: 0, y: 20, scale: 0.95 },
+  animate: { opacity: 1, y: 0, scale: 1 },
+  exit: { opacity: 0, y: 10, scale: 0.98, transition: { duration: 0.2 } },
+};
 
 function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // ✅ Fixed typo (was preventDefualt)
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
 
     const serviceId = "service_t8ylh06";
     const templateId = "template_48fk5p2";
@@ -26,102 +55,140 @@ function Contact() {
       .send(serviceId, templateId, templateParams, publicKey)
       .then((response) => {
         console.log("Email successfully sent!", response);
-        setName(""); // ✅ Clear input fields after submission
+        setName("");
         setEmail("");
         setMessage("");
+        setSubmitStatus("success");
+        setIsSubmitting(false);
+        setTimeout(() => setSubmitStatus(null), 5000); // Hide after 5s
       })
       .catch((error) => {
         console.error("Error sending email:", error);
+        setSubmitStatus("error");
+        setIsSubmitting(false);
+        setTimeout(() => setSubmitStatus(null), 5000); // Hide after 5s
       });
   };
 
   return (
-    <div className="bg-gray-700 text-white p-6 flex flex-col items-center justify-center gap-6 min-h-screen" id="Contact">
-      <div className="bg-gray-600 flex flex-col items-center justify-center gap-5 border rounded-lg p-4">
-        <h1 className="text-white text-xl sm:text-3xl font-serif md:text-5xl">
-          Get in touch
-        </h1>
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col items-center justify-center gap-8"
-        >
-          <div className="flex items-center justify-center gap-2 p-2">
-            <label
-              htmlFor="name"
-              className="text-md sm:text-lg md:text-xl font-serif"
-            >
-              Your Name:
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={name} // ✅ Controlled component
-              onChange={(e) => setName(e.target.value)}
-              className="border rounded-md p-2 text-black"
-            />
+    <motion.div
+      className="min-h-screen bg-base-100 py-20"
+      id="Contact"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-5xl font-bold text-primary">
+            Contact Me
+          </h2>
+          <p className="text-base-content/70 mt-4 text-lg">
+            I'm open to new opportunities. Let's connect.
+          </p>
+        </div>
+        <div className="card bg-base-200 shadow-2xl max-w-2xl mx-auto">
+          <div className="card-body">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-base-content/80">
+                      Name
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your Name"
+                    className="input input-bordered w-full bg-base-100"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-base-content/80">
+                      Email
+                    </span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Your Email"
+                    className="input input-bordered w-full bg-base-100"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-base-content/80">
+                    Message
+                  </span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Your message..."
+                  className="textarea textarea-bordered w-full bg-base-100"
+                  required
+                ></textarea>
+              </div>
+              <div className="card-actions justify-end">
+                <button
+                  type="submit"
+                  className={`btn btn-primary ${isSubmitting ? "loading" : ""}`}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {!isSubmitting && <Send size={18} className="ml-2" />}
+                </button>
+              </div>
+            </form>
+            <AnimatePresence>
+              {submitStatus === "success" && (
+                <motion.div
+                  className="alert alert-success shadow-lg mt-4"
+                  variants={alertVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                >
+                  <div>
+                    <span>
+                      Message sent successfully! I'll get back to you soon.
+                    </span>
+                  </div>
+                </motion.div>
+              )}
+              {submitStatus === "error" && (
+                <motion.div
+                  className="alert alert-error shadow-lg mt-4"
+                  variants={alertVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                >
+                  <div>
+                    <span>Something went wrong. Please try again later.</span>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-          <div className="flex items-center justify-center gap-2 p-2">
-            <label
-              htmlFor="email"
-              className="text-md sm:text-lg md:text-xl font-serif"
-            >
-              Your Email:
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email} // ✅ Controlled component
-              onChange={(e) => setEmail(e.target.value)}
-              className="border rounded-md p-2 text-black"
-            />
-          </div>
-          <div className="flex items-center justify-center gap-2 p-2">
-            <label
-              htmlFor="message"
-              className="text-md sm:text-lg md:text-xl font-serif"
-            >
-              Your Message:
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows="4"
-              value={message} // ✅ Controlled component
-              onChange={(e) => setMessage(e.target.value)}
-              className="border rounded-md p-2 text-black w-full break-words"
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            value="<send/>"
-            className="bg-cyan-700 hover:bg-cyan-500 font-serif px-2 py-1 rounded-md sm:px-4 sm:py-2 flex gap-2"
-          ><Send/>Send</button>
-        </form>
+        </div>
       </div>
-      <div className="flex flex-wrap justify-center gap-4">
-        <button
-          className="bg-slate-400 px-4 py-2 text-white text-sm md:text-base hover:bg-slate-600 rounded-lg hover:text-black"
-          onClick={() =>
-            window.open("https://github.com/Tharunvasireddi", "_blank")
-          }
-        >
-          <Github />
-        </button>
-        <button
-          className="bg-slate-400 px-4 py-2 text-white text-sm md:text-base hover:bg-slate-600 rounded-lg hover:text-black"
-          onClick={() =>
-            window.open(
-              "https://linkedin.com/in/tarun-vasireddi-152310319",
-              "_blank"
-            )
-          }
-        >
-          <Linkedin />
-        </button>
-      </div>
-    </div>
+    </motion.div>
   );
 }
 

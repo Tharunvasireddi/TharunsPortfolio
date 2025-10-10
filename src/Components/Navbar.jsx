@@ -17,18 +17,22 @@ function Navbar() {
     };
   }, []);
 
-  return (
-    <div>
-      <nav className="fixed w-full bg-[rgb(30,30,30)] text-gray-100 p-4 flex justify-between items-center h-10 md:h-auto">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-serif">
-          Tarun Vasireddi
-        </h1>
+  const handleLinkClick = () => {
+    setDisplay(false);
+  };
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex md:pr-28 gap-10">
-          <li>
-            <a href="#Home">Home</a>
-          </li>
+  return (
+    <nav className="sticky top-0 z-50 navbar bg-base-100/80 backdrop-blur-lg border-b border-base-300">
+      <div className="navbar-start">
+        <a
+          href="#Home"
+          className="btn btn-ghost normal-case text-xl font-bold text-primary"
+        >
+          Tarun Vasireddi
+        </a>
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1 font-medium">
           <li>
             <a href="#About">About</a>
           </li>
@@ -36,49 +40,56 @@ function Navbar() {
             <a href="#Skills">Skills</a>
           </li>
           <li>
-            <a href="#project">Project</a>
-          </li>
-          <li>
-            <a href="#Contact">Contact</a>
+            <a href="#project">Projects</a>
           </li>
         </ul>
-
-        <button className="md:hidden" onClick={() => setDisplay(true)}>
-          <Menu />
+      </div>
+      <div className="navbar-end">
+        <a href="#Contact" className="btn btn-primary hidden lg:flex">
+          Contact Me
+        </a>
+        <button
+          className="btn btn-ghost lg:hidden"
+          onClick={() => setDisplay(!isDisplay)}
+        >
+          {isDisplay ? <X /> : <Menu />}
         </button>
+      </div>
 
-        {isDisplay && (
-          <div
-            className="md:hidden fixed top-0 right-0 h-full w-2/3  backdrop-blur-lg p-4 bg-transparent"
-            ref={navbarRef}
-          >
-            <ul className="text-md font-serif font-semibold sm:text-xl space-y-2">
-              <li>
-                <a href="#Home">Home</a>
-              </li>
-              <li>
-                <a href="#About">About</a>
-              </li>
-              <li>
-                <a href="#Skills">Skills</a>
-              </li>
-              <li>
-                <a href="#project">Project</a>
-              </li>
-              <li>
-                <a href="#Contact">Contact</a>
-              </li>
-            </ul>
-            <button
-              className="absolute top-5 right-3"
-              onClick={() => setDisplay(false)}
-            >
-              <X />
-            </button>
-          </div>
-        )}
-      </nav>
-    </div>
+      {isDisplay && (
+        <div
+          className="lg:hidden absolute top-16 left-0 w-full bg-base-200 shadow-lg"
+          ref={navbarRef}
+        >
+          <ul className="menu menu-vertical space-y-2 p-4">
+            <li>
+              <a href="#About" onClick={handleLinkClick}>
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#Skills" onClick={handleLinkClick}>
+                Skills
+              </a>
+            </li>
+            <li>
+              <a href="#project" onClick={handleLinkClick}>
+                Projects
+              </a>
+            </li>
+            <li>
+              <a
+                href="#Contact"
+                className="btn btn-primary mt-2"
+                onClick={handleLinkClick}
+              >
+                Contact Me
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
+    </nav>
   );
 }
 
