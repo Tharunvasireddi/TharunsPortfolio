@@ -1,10 +1,22 @@
 import React from "react";
 
-function Projects({ quiz, weather, password, age }) {
+function Projects({ quiz, weather, password }) {
   return (
-    <div className="bg-gray-800 min-h-screen flex flex-col items-center justify-center gap-10 p-4" id="project">
-      <h1 className="text-white text-4xl font-bold font-serif">Projects</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div
+      className="hero-theme-a min-h-screen flex flex-col items-center justify-start gap-10 px-4 py-8 font-ui"
+      id="project"
+      role="region"
+      aria-labelledby="projects-heading"
+    >
+      {/* hide heavy overlay on small screens to improve readability and performance */}
+      <div className="grunge-overlay hidden sm:block" />
+      <h1
+        id="projects-heading"
+        className="text-og-red text-3xl sm:text-4xl font-bold font-display"
+      >
+        Projects
+      </h1>
+      <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {[
           {
             img: quiz,
@@ -24,40 +36,45 @@ function Projects({ quiz, weather, password, age }) {
             demo: "https://tharunvasireddi.github.io/PasswordGenerator/",
             code: "https://github.com/Tharunvasireddi/PasswordGenerator",
           },
-          {
-            img: age,
-            title: "Age Calculator",
-            demo: "https://github.com/Tharunvasireddi/Agecalculator/",
-            code: "https://github.com/Tharunvasireddi/Agecalculator",
-          },
         ].map((project, index) => (
-          <div
+          <article
             key={index}
-            className="flex flex-col bg-slate-950 items-center justify-center gap-4 border rounded-md p-0 shadow-lg"
+            className="flex flex-col bg-slate-950 items-stretch justify-between gap-4 border rounded-md p-0 shadow-lg overflow-hidden w-full"
           >
-            <img
-              src={project.img}
-              alt={project.title}
-              className="hover:scale-110 w-full h-60 object-cover p-4 transition-transform duration-300"
-            />
-            <p className="text-white font-serif text-lg leading-relaxed">
-              {project.title}
-            </p>
-            <div className="flex gap-4 mb-4">
-              <button
-                className="bg-indigo-500 text-white text-sm px-4 py-2 rounded hover:bg-indigo-400"
-                onClick={() => (window.location.href = project.demo)}
-              >
-                Demo
-              </button>
-              <button
-                className="bg-rose-500 text-white text-sm px-4 py-2 rounded hover:bg-rose-400"
-                onClick={() => (window.location.href = project.code)}
-              >
-                Code
-              </button>
+            <figure className="w-full">
+              <img
+                src={project.img}
+                alt={project.title + " screenshot"}
+                loading="lazy"
+                className="w-full h-48 md:h-60 lg:h-72 object-cover transition-transform duration-300 hover:scale-105"
+              />
+            </figure>
+            <div className="px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <p className="text-white font-serif text-lg leading-relaxed">
+                {project.title}
+              </p>
+              <div className="flex gap-3 w-full sm:w-auto flex-col sm:flex-row">
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${project.title} demo in new tab`}
+                  className="w-full sm:w-auto text-center bg-ember text-white text-sm px-4 py-2 rounded hover:bg-og-red focus:outline-none focus:ring-2 focus:ring-ember"
+                >
+                  Demo
+                </a>
+                <a
+                  href={project.code}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${project.title} source code in new tab`}
+                  className="w-full sm:w-auto text-center bg-maroon text-white text-sm px-4 py-2 rounded hover:bg-og-red focus:outline-none focus:ring-2 focus:ring-maroon"
+                >
+                  Code
+                </a>
+              </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>

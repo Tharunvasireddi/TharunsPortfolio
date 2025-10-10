@@ -36,9 +36,13 @@ function Contact() {
   };
 
   return (
-    <div className="bg-gray-700 text-white p-6 flex flex-col items-center justify-center gap-6 min-h-screen" id="Contact">
-      <div className="bg-gray-600 flex flex-col items-center justify-center gap-5 border rounded-lg p-4">
-        <h1 className="text-white text-xl sm:text-3xl font-serif md:text-5xl">
+    <div
+      className="hero-theme-a min-h-screen p-6 flex flex-col items-center justify-center gap-6 font-ui"
+      id="Contact"
+    >
+      <div className="grunge-overlay" />
+      <div className="bg-transparent flex flex-col items-center justify-center gap-5 border rounded-lg p-4">
+        <h1 className="text-og-red text-xl sm:text-3xl font-display md:text-5xl">
           Get in touch
         </h1>
         <form
@@ -96,13 +100,16 @@ function Contact() {
           <button
             type="submit"
             value="<send/>"
-            className="bg-cyan-700 hover:bg-cyan-500 font-serif px-2 py-1 rounded-md sm:px-4 sm:py-2 flex gap-2"
-          ><Send/>Send</button>
+            className="bg-ember hover:bg-og-red font-display text-white px-3 py-2 rounded-md sm:px-4 sm:py-2 flex gap-2 items-center"
+          >
+            <Send />
+            Send
+          </button>
         </form>
       </div>
       <div className="flex flex-wrap justify-center gap-4">
         <button
-          className="bg-slate-400 px-4 py-2 text-white text-sm md:text-base hover:bg-slate-600 rounded-lg hover:text-black"
+          className="bg-ember px-4 py-2 text-white text-sm md:text-base hover:bg-og-red rounded-lg"
           onClick={() =>
             window.open("https://github.com/Tharunvasireddi", "_blank")
           }
@@ -110,7 +117,7 @@ function Contact() {
           <Github />
         </button>
         <button
-          className="bg-slate-400 px-4 py-2 text-white text-sm md:text-base hover:bg-slate-600 rounded-lg hover:text-black"
+          className="bg-ember px-4 py-2 text-white text-sm md:text-base hover:bg-og-red rounded-lg"
           onClick={() =>
             window.open(
               "https://linkedin.com/in/tarun-vasireddi-152310319",

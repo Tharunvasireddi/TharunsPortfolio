@@ -6,7 +6,6 @@ import Projects from "./Components/Projects";
 import quizImage from "./Images/quiz.png";
 import weatherImage from "./Images/weatherApp.avif";
 import passwordImage from "./Images/password.png";
-import ageCalculator from "./Images/unnamed.png";
 import Navbar from "./Components/Navbar";
 import Contact from "./Components/Contact";
 function App() {
@@ -20,7 +19,6 @@ function App() {
         quiz={quizImage}
         weather={weatherImage}
         password={passwordImage}
-        age={ageCalculator}
       />
       <Contact />
     </div>

@@ -18,9 +18,9 @@ function Navbar() {
   }, []);
 
   return (
-    <div>
-      <nav className="fixed w-full bg-[rgb(30,30,30)] text-gray-100 p-4 flex justify-between items-center h-10 md:h-auto">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-serif">
+    <div className="hero-theme-a">
+      <nav className="fixed w-full bg-transparent text-gray-100 p-4 flex justify-between items-center h-10 md:h-auto font-ui">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-display text-og-red">
           Tarun Vasireddi
         </h1>
 
