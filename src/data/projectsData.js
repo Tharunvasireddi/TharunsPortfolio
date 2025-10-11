@@ -19,14 +19,14 @@ export const projectsData = [
     description:
       "A simple and elegant weather application that provides real-time weather information for any city.",
     demo: "https://tharunvasireddi.github.io/WeatherApp/",
-    code: "https://github.com/Tharunvasireddi/WeatherApp/deployments/github-pages",
+    code: "https://github.com/Tharunvasireddi/WeatherApp",
   },
   {
     img: passGen,
     title: "Password Generator",
     description:
       "A tool to generate strong, random passwords to enhance your online security.",
-    demo: "https://passwordmanager-indol.vercel.app/",
+    demo: "https://tharunvasireddi.github.io/PasswordGenerator/",
     code: "https://github.com/Tharunvasireddi/PasswordGenerator",
   },
   {
@@ -36,7 +36,7 @@ export const projectsData = [
       "A simple URL shortener that converts long URLs into short, memorable codes.",
     tech: ["JavaScript", "HTML", "CSS"],
     demo: "https://url-shortner-three-xi.vercel.app/",
-    github: "https://github.com/Tharunvasireddi/url-shortner",
+    code: "https://github.com/Tharunvasireddi/url-shortner",
   },
   {
     img: passwordManagerImage,
@@ -44,8 +44,8 @@ export const projectsData = [
     description:
       "A password manager that securely stores and manages your passwords.",
     tech: ["JavaScript", "HTML", "CSS"],
-    demo: "passwordmanager-indol.vercel.app",
-    github: "https://github.com/Tharunvasireddi/passwordmanager",
+    demo: "https://passwordmanager-indol.vercel.app/",
+    code: "https://github.com/Tharunvasireddi/passwordmanager",
   },
   {
     img: userAuthImage,
@@ -53,7 +53,7 @@ export const projectsData = [
     description:
       "A user authentication and file upload system that allows users to sign up, log in, and upload files.",
     tech: ["JavaScript", "HTML", "CSS"],
-    demo: "userauthentication-z6io.vercel.app",
-    github: "https://github.com/Tharunvasireddi/userauthentication",
+    demo: "https://userauthentication-z6io.vercel.app",
+    code: "https://github.com/Tharunvasireddi/userauthentication",
   },
 ];
