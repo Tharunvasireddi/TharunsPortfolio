@@ -46,7 +46,7 @@ function HomePage() {
             className="py-8 text-lg text-base-content/80"
             variants={itemVariants}
           >
-            Frontend Developer | DSA Enthusiast | Problem Solver
+            Full Stack Developer | DSA Enthusiast | Problem Solver
           </motion.p>
           <motion.div
             className="flex flex-wrap items-center justify-center gap-4"
