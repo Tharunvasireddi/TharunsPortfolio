@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+// prevent false-positive 'unused' lint errors in some toolchains
+void motion;
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },

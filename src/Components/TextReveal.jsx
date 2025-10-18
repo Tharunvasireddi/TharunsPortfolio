@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+// prevent false-positive 'unused' lint errors in some toolchains
+void motion;
 
 // Reusable text reveal that animates each character with a stagger.
 // Props:

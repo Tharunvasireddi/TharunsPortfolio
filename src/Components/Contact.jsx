@@ -9,6 +9,9 @@ import {
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { motion, AnimatePresence } from "framer-motion";
+// ensure linter/build recognizes motion as used (JSX-only usage can be missed)
+void motion;
+import AnimatedButton from "./AnimatedButton";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -145,14 +148,17 @@ function Contact() {
                 ></textarea>
               </div>
               <div className="card-actions justify-end">
-                <button
+                <AnimatedButton
+                  as="button"
                   type="submit"
-                  className={`btn btn-primary ${isSubmitting ? "loading" : ""}`}
+                  variant="solid"
+                  size="md"
+                  className={`${isSubmitting ? "loading" : ""}`}
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                   {!isSubmitting && <Send size={18} className="ml-2" />}
-                </button>
+                </AnimatedButton>
               </div>
             </form>
             <AnimatePresence>

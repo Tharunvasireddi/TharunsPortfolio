@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+// prevent false-positive 'unused' lint errors in some toolchains
+void motion;
 import TextReveal from "./TextReveal";
 
 const sectionVariants = {

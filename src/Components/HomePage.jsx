@@ -2,6 +2,9 @@ import React from "react";
 import { Github, Linkedin, Download } from "lucide-react";
 import resumePDF from "../Assests/TharunResume (3).pdf";
 import { motion } from "framer-motion";
+// some linters don't detect JSX usage of motion; keep a harmless reference
+void motion;
+import AnimatedButton from "./AnimatedButton";
 import TextReveal from "./TextReveal";
 
 const containerVariants = {
@@ -52,39 +55,40 @@ function HomePage() {
             />
           </p>
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
             variants={itemVariants}
           >
-            <motion.a
+            <AnimatedButton
+              as="a"
               href={resumePDF}
               download="Tharun-Vasireddi-Resume.pdf"
-              className="btn btn-primary btn-wide"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              variant="solid"
+              size="lg"
+              className="btn-wide"
             >
               <Download className="mr-2" />
               Download Resume
-            </motion.a>
-            <motion.a
-              href="https://github.com/Tharunvasireddi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-ghost"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Github />
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com/in/tarun-vasireddi-152310319"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-ghost"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Linkedin />
-            </motion.a>
+            </AnimatedButton>
+            <div className="flex gap-2">
+              <AnimatedButton
+                as="a"
+                href="https://github.com/Tharunvasireddi"
+                variant="ghost"
+                size="md"
+                aria-label="GitHub"
+              >
+                <Github />
+              </AnimatedButton>
+              <AnimatedButton
+                as="a"
+                href="https://linkedin.com/in/tarun-vasireddi-152310319"
+                variant="ghost"
+                size="md"
+                aria-label="LinkedIn"
+              >
+                <Linkedin />
+              </AnimatedButton>
+            </div>
           </motion.div>
         </div>
       </motion.div>

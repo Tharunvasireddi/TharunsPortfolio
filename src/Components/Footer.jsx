@@ -1,6 +1,9 @@
 import React from "react";
 import { Github, Linkedin, ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
+import AnimatedButton from "./AnimatedButton";
+// prevent false-positive 'unused' lint errors in some toolchains
+void motion;
 
 const footerVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -24,22 +27,30 @@ export default function Footer() {
     >
       <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <a
+          <AnimatedButton
+            as="a"
             href="https://github.com/Tharunvasireddi"
             target="_blank"
             rel="noreferrer"
-            className="btn btn-ghost btn-sm"
+            variant="ghost"
+            size="sm"
+            aria-label="GitHub"
+            className=""
           >
             <Github />
-          </a>
-          <a
+          </AnimatedButton>
+          <AnimatedButton
+            as="a"
             href="https://linkedin.com/in/tarun-vasireddi-152310319"
             target="_blank"
             rel="noreferrer"
-            className="btn btn-ghost btn-sm"
+            variant="ghost"
+            size="sm"
+            aria-label="LinkedIn"
+            className=""
           >
             <Linkedin />
-          </a>
+          </AnimatedButton>
         </div>
 
         <div className="text-center text-sm text-base-content/70">

@@ -1,5 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
+import AnimatedButton from "./AnimatedButton";
+// prevent false-positive 'unused' lint errors in some toolchains
+void motion;
 
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -38,22 +41,26 @@ const ProjectCard = ({
         </h2>
         <p className="text-base-content/80 mt-2">{project.description}</p>
         <div className="card-actions justify-start mt-6">
-          <a
+          <AnimatedButton
+            as="a"
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary"
+            variant="solid"
+            size="md"
           >
             {demoLabel}
-          </a>
-          <a
+          </AnimatedButton>
+          <AnimatedButton
+            as="a"
             href={project.code}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-ghost text-base-content/80"
+            variant="ghost"
+            size="md"
           >
             {codeLabel}
-          </a>
+          </AnimatedButton>
         </div>
       </div>
     </motion.div>

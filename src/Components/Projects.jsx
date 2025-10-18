@@ -1,6 +1,8 @@
 import React from "react";
 import ProjectCard from "./ProjectCard";
 import { motion } from "framer-motion";
+// prevent false-positive 'unused' lint errors in some toolchains
+void motion;
 
 const containerVariants = {
   hidden: { opacity: 0 },
