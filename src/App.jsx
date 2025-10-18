@@ -5,7 +5,8 @@ import Skills from "./Components/Skills";
 import Projects from "./Components/Projects";
 import Navbar from "./Components/Navbar";
 import Contact from "./Components/Contact";
-import {projectsData} from "./data/projectsData";
+import Footer from "./Components/Footer";
+import { projectsData } from "./data/projectsData";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Skills />
       <Projects projects={projectsData} />
       <Contact />
+      <Footer />
     </div>
   );
 }

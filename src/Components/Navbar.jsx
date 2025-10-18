@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
+// reference to avoid some linters complaining about unused imports when motion is used solely in JSX
+void motion;
 
 function Navbar() {
   const [isDisplay, setDisplay] = useState(false);
@@ -31,7 +34,12 @@ function Navbar() {
           Tarun Vasireddi
         </a>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <motion.div
+        className="navbar-center hidden lg:flex"
+        initial={{ opacity: 0, y: -6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+      >
         <ul className="menu menu-horizontal px-1 font-medium">
           <li>
             <a href="#About">About</a>
@@ -43,7 +51,7 @@ function Navbar() {
             <a href="#project">Projects</a>
           </li>
         </ul>
-      </div>
+      </motion.div>
       <div className="navbar-end">
         <a href="#Contact" className="btn btn-primary hidden lg:flex">
           Contact Me
@@ -57,9 +65,13 @@ function Navbar() {
       </div>
 
       {isDisplay && (
-        <div
+        <motion.div
           className="lg:hidden absolute top-16 left-0 w-full bg-base-200 shadow-lg"
           ref={navbarRef}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.28 }}
         >
           <ul className="menu menu-vertical space-y-2 p-4">
             <li>
@@ -87,7 +99,7 @@ function Navbar() {
               </a>
             </li>
           </ul>
-        </div>
+        </motion.div>
       )}
     </nav>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import TextReveal from "./TextReveal";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -26,10 +27,14 @@ function About() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-primary">
-            About Me
+            <TextReveal text={"About Me"} className="inline-block" />
           </h2>
           <p className="text-base-content/70 mt-4 text-lg">
-            A little bit about my journey and education.
+            <TextReveal
+              text={"A little bit about my journey and education."}
+              className="inline-block"
+              delay={0.15}
+            />
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">

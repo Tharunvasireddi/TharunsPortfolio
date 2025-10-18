@@ -2,6 +2,7 @@ import React from "react";
 import { Github, Linkedin, Download } from "lucide-react";
 import resumePDF from "../Assests/TharunResume (3).pdf";
 import { motion } from "framer-motion";
+import TextReveal from "./TextReveal";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -36,18 +37,20 @@ function HomePage() {
         viewport={{ once: true, amount: 0.5 }}
       >
         <div className="max-w-2xl">
-          <motion.h1
-            className="text-5xl font-bold sm:text-7xl text-base-content"
-            variants={itemVariants}
-          >
-            Hi, I'm <span className="text-primary">Tarun Vasireddi</span>
-          </motion.h1>
-          <motion.p
-            className="py-8 text-lg text-base-content/80"
-            variants={itemVariants}
-          >
-            Full Stack Developer | DSA Enthusiast | Problem Solver
-          </motion.p>
+          <h1 className="text-5xl font-bold sm:text-7xl text-base-content">
+            <TextReveal text={"Hi, I'm "} className="inline-block" />
+            <span className="text-primary">
+              <TextReveal text={"Tarun Vasireddi"} className="inline-block" />
+            </span>
+          </h1>
+          <p className="py-8 text-lg text-base-content/80">
+            <TextReveal
+              text={"Full Stack Developer | DSA Enthusiast | Problem Solver"}
+              className="inline-block"
+              delay={0.6}
+              stagger={0.02}
+            />
+          </p>
           <motion.div
             className="flex flex-wrap items-center justify-center gap-4"
             variants={itemVariants}

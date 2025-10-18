@@ -41,7 +41,7 @@ function Contact() {
     setSubmitStatus(null);
 
     const serviceId = "service_t8ylh06";
-    const templateId = "template_48fk5p2";
+    const templateId = "";
     const publicKey = "W-JwubgxYhhlhW-D9";
 
     const templateParams = {

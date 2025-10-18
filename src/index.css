@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Custom global styles (Tailwind directives moved to index.pcss) */
 
 html {
   scroll-behavior: smooth;
