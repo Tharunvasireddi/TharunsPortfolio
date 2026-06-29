@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowDown, Github, Linkedin, Download } from "lucide-react";
+import heroImage from "../Assests/hero.png";
 import resumePDF from "../Assests/tarunresume (1).pdf";
 import { motion } from "framer-motion";
 void motion;
@@ -109,38 +110,18 @@ function HomePage() {
 					</motion.a>
 				</div>
 				<motion.div
-					className="premium-card relative overflow-hidden rounded-lg p-6"
+					className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl border border-line bg-card shadow-[0_28px_70px_rgba(0,0,0,0.34)] sm:max-w-[500px] lg:ml-auto lg:max-w-[460px]"
 					variants={itemVariants}
 					whileHover={{ y: -4 }}
 					transition={{ duration: 0.24, ease: "easeOut" }}
 				>
-					<div className="flex flex-col gap-4 border-b border-line pb-5 sm:flex-row sm:items-center sm:justify-between">
-						<div>
-							<p className="text-sm text-muted">Current focus</p>
-							<p className="mt-1 font-semibold text-ink">Frontend systems</p>
-						</div>
-						<span className="w-fit rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-sm text-emerald-300">
-							Open to internships
-						</span>
-					</div>
-					<div className="grid gap-4 py-6">
-						{[
-							["React", "Component-driven interfaces"],
-							["DSA", "Problem solving practice"],
-							["Tailwind", "Responsive product UI"],
-						].map(([title, detail]) => (
-							<div key={title} className="rounded-md border border-line bg-bg/60 p-4">
-								<p className="font-semibold text-ink">{title}</p>
-								<p className="mt-1 text-sm leading-6 text-muted">{detail}</p>
-							</div>
-						))}
-					</div>
-					<div className="border-t border-line pt-5">
-						<p className="text-sm leading-6 text-muted">
-							Designed for clarity, built for performance, and organized so
-							each project can be scanned quickly.
-						</p>
-					</div>
+					<img
+						src={heroImage}
+						alt="Tarun Vasireddi"
+						className="aspect-[4/5] h-auto w-full rounded-2xl object-cover object-center"
+						loading="eager"
+						fetchPriority="high"
+					/>
 				</motion.div>
 			</motion.div>
 		</section>
