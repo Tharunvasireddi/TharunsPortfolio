@@ -10,13 +10,15 @@ import { projectsData } from "./data/projectsData";
 
 function App() {
   return (
-    <div className="min-h-screen m-0 p-0" data-theme="portfolio-theme">
+    <div className="min-h-screen overflow-x-hidden bg-bg text-ink" data-theme="portfolio-theme">
       <Navbar />
-      <HomePage />
-      <About />
-      <Skills />
-      <Projects projects={projectsData} />
-      <Contact />
+      <main>
+        <HomePage />
+        <About />
+        <Skills />
+        <Projects projects={projectsData} />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );

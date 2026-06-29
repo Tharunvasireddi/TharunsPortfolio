@@ -1,7 +1,6 @@
 import React from "react";
 import ProjectCard from "./ProjectCard";
 import { motion } from "framer-motion";
-// prevent false-positive 'unused' lint errors in some toolchains
 void motion;
 
 const containerVariants = {
@@ -17,18 +16,20 @@ const containerVariants = {
 
 function Projects({ projects }) {
   return (
-    <div className="min-h-screen bg-base-200 py-20" id="project">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-primary">
-            My Projects
-          </h2>
-          <p className="text-base-content/70 mt-4 text-lg">
-            A selection of my recent work.
+    <section className="border-y border-line bg-panel py-24 sm:py-32" id="project">
+      <div className="section-shell">
+        <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <div className="max-w-2xl">
+            <p className="section-kicker">Projects</p>
+            <h2 className="section-title">Selected work with real product constraints.</h2>
+          </div>
+          <p className="section-copy max-w-md lg:text-right">
+            Each card highlights the problem space, implementation stack, and
+            direct paths to inspect the live result or code.
           </p>
         </div>
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -39,7 +40,7 @@ function Projects({ projects }) {
           ))}
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }
 

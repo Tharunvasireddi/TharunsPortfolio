@@ -1,8 +1,7 @@
 import React from "react";
-import { Github, Linkedin, ArrowUp } from "lucide-react";
+import { ArrowUp, Github, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 import AnimatedButton from "./AnimatedButton";
-// prevent false-positive 'unused' lint errors in some toolchains
 void motion;
 
 const footerVariants = {
@@ -19,13 +18,13 @@ export default function Footer() {
 
   return (
     <motion.footer
-      className="bg-base-200 border-t border-base-300 mt-16"
+      className="border-t border-line bg-panel"
       variants={footerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="section-shell flex flex-col items-center justify-between gap-5 py-8 md:flex-row">
         <div className="flex items-center gap-3">
           <AnimatedButton
             as="a"
@@ -35,9 +34,8 @@ export default function Footer() {
             variant="ghost"
             size="sm"
             aria-label="GitHub"
-            className=""
           >
-            <Github />
+            <Github size={17} />
           </AnimatedButton>
           <AnimatedButton
             as="a"
@@ -47,25 +45,23 @@ export default function Footer() {
             variant="ghost"
             size="sm"
             aria-label="LinkedIn"
-            className=""
           >
-            <Linkedin />
+            <Linkedin size={17} />
           </AnimatedButton>
         </div>
 
-        <div className="text-center text-sm text-base-content/70">
-          © {year} Tarun Vasireddi. All rights reserved.
+        <div className="text-center text-sm text-muted">
+          Copyright {year} Tarun Vasireddi. Built with React, Vite, and Tailwind CSS.
         </div>
 
-        <div className="flex items-center gap-2">
-          <button
-            onClick={scrollToTop}
-            className="btn btn-outline btn-sm flex items-center gap-2"
-          >
-            <ArrowUp />
-            Top
-          </button>
-        </div>
+        <button
+          onClick={scrollToTop}
+          className="inline-flex h-9 items-center gap-2 rounded-md border border-line bg-white/[0.03] px-3 text-sm font-medium text-muted transition-colors hover:border-accent/50 hover:text-ink"
+          aria-label="Back to top"
+        >
+          <ArrowUp size={16} />
+          Top
+        </button>
       </div>
     </motion.footer>
   );

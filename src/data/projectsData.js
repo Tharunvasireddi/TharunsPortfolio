@@ -10,6 +10,7 @@ export const projectsData = [
     title: "Quiz App",
     description:
       "A fun and interactive quiz application to test your knowledge on various topics.",
+    tech: ["JavaScript", "HTML", "CSS"],
     demo: "https://tharunvasireddi.github.io/QUIZAPP/",
     code: "https://github.com/Tharunvasireddi/QUIZAPP",
   },
@@ -18,6 +19,7 @@ export const projectsData = [
     title: "Weather App",
     description:
       "A simple and elegant weather application that provides real-time weather information for any city.",
+    tech: ["JavaScript", "API", "CSS"],
     demo: "https://tharunvasireddi.github.io/WeatherApp/",
     code: "https://github.com/Tharunvasireddi/WeatherApp",
   },
@@ -26,6 +28,7 @@ export const projectsData = [
     title: "Password Generator",
     description:
       "A tool to generate strong, random passwords to enhance your online security.",
+    tech: ["JavaScript", "HTML", "CSS"],
     demo: "https://tharunvasireddi.github.io/PasswordGenerator/",
     code: "https://github.com/Tharunvasireddi/PasswordGenerator",
   },

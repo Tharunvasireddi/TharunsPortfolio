@@ -22,17 +22,21 @@ export default function AnimatedButton({
   icon = null,
   ...props
 }) {
-  const base = "flex items-center gap-2 justify-center font-medium rounded-md";
+  const base =
+    "inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-300 disabled:pointer-events-none disabled:opacity-60";
   const sizeMap = {
-    sm: "px-3 py-1.5 text-sm",
-    md: "px-4 py-2 text-base",
-    lg: "px-6 py-3 text-lg",
+    sm: "h-9 px-3 text-sm",
+    md: "h-11 px-4 text-[15px]",
+    lg: "h-12 px-5 text-base",
   };
 
   const variantMap = {
-    solid: "btn btn-primary",
-    ghost: "btn btn-ghost",
-    outline: "btn btn-outline",
+    solid:
+      "bg-accent text-white shadow-[0_12px_30px_rgba(99,102,241,0.22)] hover:bg-indigo-500",
+    ghost:
+      "border border-line bg-white/[0.03] text-ink hover:border-white/16 hover:bg-white/[0.06]",
+    outline:
+      "border border-line bg-transparent text-muted hover:border-accent/60 hover:text-ink",
   };
 
   const classes = `${base} ${sizeMap[size] || sizeMap.md} ${
@@ -40,9 +44,9 @@ export default function AnimatedButton({
   } ${className}`.trim();
 
   const motionProps = {
-    whileHover: { scale: 1.04 },
-    whileTap: { scale: 0.96 },
-    transition: { type: "spring", stiffness: 400, damping: 28 },
+    whileHover: { scale: 1.02 },
+    whileTap: { scale: 0.98 },
+    transition: { duration: 0.18, ease: "easeOut" },
   };
 
   if (as === "a") {
